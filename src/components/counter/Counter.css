@@ -1,0 +1,23 @@
+button {
+  background-color: #F65261;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background-color: #f42032;
+  cursor: pointer;
+}
+
+.counter {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.count {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 0 10px;
+}
