@@ -20,4 +20,5 @@ button:hover {
   display: inline-block;
   margin: 0 15px;
   padding: 0 10px;
+  line-height: 35px;
 }
