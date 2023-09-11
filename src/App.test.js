@@ -1,8 +1,10 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react header', () => {
+test('renders without crashing', () => {
   render(<App />);
-  const header = screen.getByText(/learn react/i);
-  expect(header).toBeInTheDocument();
+  const appComponent = screen.getByTestId('app');
+
+  expect(appComponent).toBeInTheDocument();
 });

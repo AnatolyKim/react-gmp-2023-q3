@@ -17,7 +17,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app" data-testid="app">
       <div className='content-restrict'>
         <Counter count={1}/>
         <SearchForm className="search" initialQuery={''} onSearch={onSearchSubmit}/>
