@@ -18,7 +18,7 @@ export default function SearchForm({ initialQuery, onSearch }) {
     <form onSubmit={handleSubmit} className="search-form">
       <input 
         type="text" 
-        value={searchQuery} 
+        defaultValue={searchQuery} 
         onChange={handleChange} 
         placeholder="What do you want to watch?" 
         className="search-input"

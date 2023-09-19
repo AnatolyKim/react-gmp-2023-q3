@@ -31,6 +31,7 @@ function App() {
   return (
     <div className="app">
       <div className='content-restrict'>
+        <h1>Learn react</h1>
         <Counter count={1}/>
         <SearchForm className="search" initialQuery={''} onSearch={onSearchSubmit}/>
         <GenreSelect genres={genres} selectedGenre={selectedGenre} onSelect={onGenreSelect} />
