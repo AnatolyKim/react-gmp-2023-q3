@@ -4,7 +4,7 @@ import App from './App';
 
 test('renders without crashing', () => {
   render(<App />);
-  const appComponent = screen.getByTestId('app');
+  const header = screen.getByText('Learn react');
 
-  expect(appComponent).toBeInTheDocument();
+  expect(header).toBeInTheDocument();
 });
