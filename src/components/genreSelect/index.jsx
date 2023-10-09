@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './GenreSelect.css';
+import './styles.css';
 
 export default function GenreSelect({ genres, selectedGenre, onSelect }) {
   let [expanded, setExpanded] = useState(false);
@@ -14,13 +14,13 @@ export default function GenreSelect({ genres, selectedGenre, onSelect }) {
         checkedValues.filter((checkedValue) => checkedValue !== value)
       );
     }
-    onSelect(genre);
+    onSelect(checkedValues);
   }
 
   return (
     <div className="genre-select-container">
       <label className="genre-select-label">Genre</label>
-      <div className={`genre-select-toggle ${expanded ? 'active' : ''}`} onClick={() => setExpanded(!expanded)}>Select Genre</div>
+      <div className={`genre-select-toggle ${expanded ? 'active' : ''}`} onClick={() => setExpanded(!expanded)} tabIndex="0">Select Genre</div>
       <div className="genre-options">
         {genres.map((genre) => (
           <div key={genre} className="genre-option">

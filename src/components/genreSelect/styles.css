@@ -2,8 +2,6 @@
   width: 525px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 .genre-select-label {

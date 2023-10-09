@@ -1,4 +1,4 @@
-import GenreSelect from '../components/genreSelect/GenreSelect';
+import GenreSelect from '../components/genreSelect';
 
 export default {
   title: 'App/GenreSelect',

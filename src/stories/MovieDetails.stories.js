@@ -1,4 +1,4 @@
-import MovieDetails from '../components/movieDetails/MovieDetails';
+import MovieDetails from '../components/movieDetails';
 
 export default {
   title: 'App/MovieDetails',
