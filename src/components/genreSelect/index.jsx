@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './styles.css';
+import styles from './styles.module.css';
 
 export default function GenreSelect({ genres, selectedGenre, onSelect }) {
   let [expanded, setExpanded] = useState(false);
@@ -18,21 +18,20 @@ export default function GenreSelect({ genres, selectedGenre, onSelect }) {
   }
 
   return (
-    <div className="genre-select-container">
-      <label className="genre-select-label">Genre</label>
-      <div className={`genre-select-toggle ${expanded ? 'active' : ''}`} onClick={() => setExpanded(!expanded)} tabIndex="0">Select Genre</div>
-      <div className="genre-options">
+    <div className={styles.container}>
+      <label className={styles.label}>Genre</label>
+      <div className={`${styles.toggle} ${expanded ? styles.active : ''}`} onClick={() => setExpanded(!expanded)} tabIndex="0">Select Genre</div>
+      <div className={styles.options}>
         {genres.map((genre) => (
-          <div key={genre} className="genre-option">
-            <label className="genre-container">{genre}
+          <div key={genre} className={styles.option}>
+            <label className={styles.genreContainer}>{genre}
               <input 
                 type="checkbox" 
                 value={genre} 
                 checked={checkedValues.includes(genre)} 
                 onChange={event => handleOnChange(event, genre)} 
-                className="genre-checkbox"
               ></input>
-              <span className="checkmark"></span>
+              <span className={styles.checkmark}></span>
             </label>
           </div>
         ))}

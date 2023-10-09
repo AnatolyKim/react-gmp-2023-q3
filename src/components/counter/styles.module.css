@@ -1,11 +1,11 @@
-.counter-button {
+.button {
   background-color: #F65261;
   border: none;
   color: white;
   padding: 10px 20px;
 }
 
-.counter-button:hover {
+.button:hover {
   background-color: #f42032;
   cursor: pointer;
 }

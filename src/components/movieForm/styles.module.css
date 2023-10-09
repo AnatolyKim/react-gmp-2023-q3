@@ -1,4 +1,4 @@
-.movie-form {
+.form {
   width: 980;
   padding: 60px;
   flex-shrink: 0;
@@ -6,17 +6,17 @@
   box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.05), 0px 10px 20px 0px rgba(0, 0, 0, 0.05), 0px 2px 10px 0px rgba(0, 0, 0, 0.07), 0px 0px 2px 0px rgba(0, 0, 0, 0.10);
 }
 
-.grid-container {
+.gridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
 
-.grid-item:nth-child(7) {
+.gridItem:nth-child(7) {
   grid-column: span 2;
 }
 
-.movie-form-header {
+.formHeader {
   margin: 0;
   color: #FFF;
   font-family: Montserrat;
@@ -29,14 +29,14 @@
   text-align: left;
 }
 
-.movie-form-control {
+.formControl {
   display: flex;
   flex-direction: column;
   text-align: left;
   gap: 15px;
 }
 
-.movie-form-control span {
+.formControl span {
   color: #F65261;
   font-family: Montserrat;
   font-size: 16px;
@@ -47,8 +47,8 @@
   text-transform: uppercase;
 }
 
-.movie-form-control input,
-.movie-form-control textarea {
+.formControl input,
+.formControl textarea {
   border-radius: 4px;
   opacity: 0.8031;
   background: rgba(50, 50, 50, 0.95);
@@ -63,21 +63,21 @@
   line-height: normal;
 }
 
-.movie-form-control textarea {
+.formControl textarea {
   min-height: 200px;
 }
 
-.movie-form-controls {
+.formControls {
   margin: 40px 0;
 }
 
-.movie-form-actions {
+.formActions {
   display: flex;
   justify-content: flex-end;
   gap: 50px;
 }
 
-.movie-form-actions button {
+.formActions button {
   width: 233px;
   height: 57px;
   flex-shrink: 0;

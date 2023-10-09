@@ -1,10 +1,10 @@
-.genre-select-container {
+.container {
   width: 525px;
   display: flex;
   flex-direction: column;
 }
 
-.genre-select-label {
+.label {
   color: #F65261;
   font-size: 16px;
   font-weight: 600;
@@ -14,7 +14,7 @@
   margin-bottom: 13px;
 }
 
-.genre-select-toggle {
+.toggle {
   height: 57px;
   padding: 18px;
   text-align: left;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.genre-select-toggle::after {
+.toggle::after {
   content: '';
   display: block;
   height: 12px;
@@ -40,7 +40,7 @@
   top: 25px;
 }
 
-.genre-options {
+.options {
   display: none;
   padding: 18px;
   border-radius: 4px;
@@ -49,17 +49,17 @@
   backdrop-filter: blur(13.591408729553223px);
 }
 
-.genre-select-toggle.active::after {
+.toggle.active::after {
   background-image: url('../../assets/icons/arrow-up.svg');
 }
 
-.genre-select-toggle.active + .genre-options {
+.toggle.active + .options {
   display: flex;
   flex-direction: column;
   gap: 18px
 }
 
-.genre-option {
+.option {
   color: #FFF;
   font-size: 20px;
   font-weight: 400;
@@ -67,7 +67,7 @@
   text-align: left;
 }
 
-.genre-container {
+.genreContainer {
   display: block;
   position: relative;
   padding-left: 30px;
@@ -75,7 +75,7 @@
   line-height: 20px;
 }
 
-.genre-container input {
+.genreContainer input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -93,7 +93,7 @@
   background: #E6E8ED;
 }
 
-.genre-container input:checked ~ .checkmark {
+.genreContainer input:checked ~ .checkmark {
   background-color: #E64C5A;
   background-image: url('../../assets/icons/checkmark.svg');
   background-repeat: no-repeat;

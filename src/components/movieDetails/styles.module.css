@@ -1,24 +1,24 @@
-.movie-details,
-.movie-details-header,
-.movie-details-timings,
-.movie-details-info {
+.details,
+.header,
+.timings,
+.info {
   display: flex;
 }
 
-.movie-details {
+.details {
   gap: 50px;
 }
 
-.movie-details-info {
+.info {
   flex-direction: column;
 }
 
-.movie-details-header {
+.header {
   gap: 25px;
   align-items: center;
 }
 
-.movie-details-header h3 {
+.header h3 {
   color: #FFF;
   text-align: center;
   font-family: Montserrat;
@@ -31,7 +31,7 @@
   margin: 0;
 }
 
-.movie-details-timings {
+.timings {
   gap: 50px;
   color: #F65261;
   font-family: Montserrat;
@@ -42,11 +42,11 @@
   margin: 30px 0;
 }
 
-.movie-details-poster {
+.poster {
   min-width: 325px;
 }
 
-.movie-details-rating {
+.rating {
   width: 60px;
   height: 60px;
   border: 1px solid white;
@@ -62,7 +62,7 @@
   line-height: 60px;
 }
 
-.movie-details-genres {
+.genres {
   text-align: left;
   color: #FFF;
   font-family: Montserrat;
@@ -73,7 +73,7 @@
   opacity: 0.5;
 }
 
-.movie-details-description {
+.description {
   color: #FFF;
   font-family: Montserrat;
   font-size: 20px;

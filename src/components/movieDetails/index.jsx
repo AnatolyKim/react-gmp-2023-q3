@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css'
+import styles from './styles.module.css'
 
 function MovieDetails({ movie }) {
   const { imageUrl, name, releaseYear, rating, duration, description, genres } = movie;
@@ -9,27 +9,27 @@ function MovieDetails({ movie }) {
   }
 
   return (
-    <div className="movie-details">
-      <div className="movie-details-poster">
+    <div className={styles.details}>
+      <div className={styles.poster}>
         <img src={imageUrl} alt={name} />
       </div>
-      <div className="movie-details-info">
-        <div className="movie-details-header">
+      <div className={styles.info}>
+        <div className={styles.header}>
           <h3>{name}</h3>
-          <div className="movie-details-rating">{rating}</div>
+          <div className={styles.rating}>{rating}</div>
         </div>
-        <div className="movie-details-genres">
+        <div className={styles.genres}>
           {genres.map((genre, index) => (
-            <span key={index} className="movie-tile-genre">
+            <span key={index}>
               {genre}{index !== genres.length - 1 && ','}&nbsp;
             </span>
           ))}
         </div>
-        <p className="movie-details-timings">
+        <p className={styles.timings}>
           <span>{releaseYear}</span>
           <span>{convertMinutesToHours(duration)}</span>
         </p>
-        <p className="movie-details-description">{description}</p>
+        <p className={styles.description}>{description}</p>
       </div>
     </div>
   );

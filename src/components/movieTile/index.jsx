@@ -1,19 +1,19 @@
 import React from 'react';
-import './styles.css';
+import styles from './styles.module.css';
 
 function MovieTile({ movie, onClick }) {
   const { imageUrl, name, releaseYear, genres } = movie;
 
   return (
-    <div className="movie-tile" onClick={() => onClick(movie)}>
+    <div className={styles.tile} onClick={() => onClick(movie)}>
       <img src={imageUrl} alt={name} />
-      <div className="movie-title">
-        <p className="movie-tile-name">{name}</p>
-        <p className="movie-tile-release-year">{releaseYear}</p>
+      <div className={styles.title}>
+        <p className={styles.name}>{name}</p>
+        <p className={styles.year}>{releaseYear}</p>
       </div>
-      <div className="movie-tile-genres">
+      <div className={styles.genres}>
         {genres.map((genre, index) => (
-          <span key={index} className="movie-tile-genre">
+          <span key={index} className={styles.genre}>
             {genre}{index !== genres.length - 1 && ','}&nbsp;
           </span>
         ))}

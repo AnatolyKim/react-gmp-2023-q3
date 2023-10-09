@@ -1,10 +1,10 @@
-.sort-control {
+.control {
   display: flex;
   gap: 30px;
   align-items: center;
 }
 
-.sort-control-label {
+.label {
   color: #FFF;
   font-family: Montserrat;
   font-size: 16px;
@@ -16,7 +16,7 @@
   opacity: 0.5;
 }
 
-.sort-control-select {
+.select {
   color: #FFF;
   font-family: Montserrat;
   font-size: 16px;
