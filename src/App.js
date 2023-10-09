@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app" data-testid="app">
       <div className='content-restrict'>
         <h1>Learn react</h1>
         <Counter count={1}/>
