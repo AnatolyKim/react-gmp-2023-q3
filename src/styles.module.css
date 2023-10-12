@@ -1,0 +1,153 @@
+.app {
+  text-align: center;
+}
+
+.contentRestrict {
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.divider {
+  margin-bottom: 25px;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 150px;
+  height: 25px;
+  background: url('../public/assets/icons/logo.svg') no-repeat;
+  background-position: center;
+}
+
+.header {
+  min-height: 400px;
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('../public/assets/common/bitmap.jpg') no-repeat;
+  background-size: cover;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 90px 0 30px 0;
+}
+
+.title {
+  color: #FFF;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.addMovie {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 180px;
+  height: 45px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px #F65261 solid;
+  color: #F65261;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.addMovie:hover {
+  cursor: pointer;
+  background: #FFF;
+}
+
+.searchForm {
+  min-width: 1000px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.genres {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.genre {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+  height: 100%;
+  line-height: 60px;
+}
+
+.genre:hover {
+  cursor: pointer;
+}
+
+.genre.active {
+  border-bottom: 2px #F65261 solid;
+}
+
+.movieList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+  margin: 20px 0;
+}
+
+.totalCount {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+  padding: 30px 0;
+  text-align: left;
+}
+
+.footer {
+  height: 70px;
+  background: url('../public/assets/icons/logo.svg') no-repeat;
+  background-position: center;
+  background-color: #424242;
+}
+
+.search {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: url('../public/assets/icons/search.svg') no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.search:hover {
+  border-radius: 4px;
+  border: 1px #F65261 solid;
+  cursor: pointer;
+}
