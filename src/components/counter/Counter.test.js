@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Counter from './Counter';
+import Counter from './index';
+import { act } from 'react-dom/test-utils';
 
 describe('Counter component', () => {
   it('should render initial value provided in props', () => {
@@ -16,7 +17,9 @@ describe('Counter component', () => {
     const decrementButton = getByText('<');
     const countElement = getByText('0');
 
-    userEvent.click(decrementButton);
+    act(() => {
+      userEvent.click(decrementButton);
+    });
 
     expect(countElement).toHaveTextContent('-1');
   });
@@ -26,8 +29,10 @@ describe('Counter component', () => {
     const incrementButton = getByText('>');
     const countElement = getByText('0');
 
-    userEvent.click(incrementButton);
-    
+    act(() => {
+      userEvent.click(incrementButton);
+    });
+
     expect(countElement).toHaveTextContent('1');
   });
 });
