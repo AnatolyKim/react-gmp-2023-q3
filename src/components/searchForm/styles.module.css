@@ -1,4 +1,8 @@
 .form {
+  min-width: 1000px;
+}
+
+.controls {
   display: flex;
   gap: 14px;
   margin: 0 120px;
@@ -36,4 +40,16 @@
 .submit:hover {
   background-color: #f42032;
   cursor: pointer;
+}
+
+.header {
+  color: #FFF;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }

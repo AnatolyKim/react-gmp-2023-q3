@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from './styles.module.css'
+import { useLoaderData } from 'react-router-dom';
+import { mapMovieData } from '../../helpers/movie.helper';
 
 function MovieDetails({ movie }) {
-  const { imageUrl, name, releaseYear, rating, duration, description, genres } = movie;
+  const data = movie || mapMovieData(useLoaderData());
+
+  const { imageUrl, name, releaseYear, rating, duration, description, genres } = data;
 
   function convertMinutesToHours(mins) {
     return `${Math.floor(mins / 60)}h ${mins % 60}min`;
