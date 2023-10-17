@@ -1,0 +1,107 @@
+.form {
+  width: 980;
+  padding: 60px;
+  flex-shrink: 0;
+  background: #232323;
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.05), 0px 10px 20px 0px rgba(0, 0, 0, 0.05), 0px 2px 10px 0px rgba(0, 0, 0, 0.07), 0px 0px 2px 0px rgba(0, 0, 0, 0.10);
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.gridItem:nth-child(7) {
+  grid-column: span 2;
+}
+
+.formHeader {
+  margin: 0;
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 15px;
+}
+
+.formControl span {
+  color: #F65261;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.889px;
+  text-transform: uppercase;
+}
+
+.formControl input,
+.formControl textarea {
+  border-radius: 4px;
+  opacity: 0.8031;
+  background: rgba(50, 50, 50, 0.95);
+  border: none;
+  height: 57px;
+  padding: 18px;
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.formControl textarea {
+  min-height: 200px;
+}
+
+.formControls {
+  margin: 40px 0;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 50px;
+}
+
+.formActions button {
+  width: 233px;
+  height: 57px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+button.primary {
+  background-color: #F65261;
+  color: #FFF;
+}
+
+button.primary:hover {
+  background-color: #f42032;
+  cursor: pointer;
+}
+
+button.secondary {
+  background-color: transparent;
+  color: #F65261;
+  border: 1px solid #F65261;
+}

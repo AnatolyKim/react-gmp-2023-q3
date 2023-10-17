@@ -50,7 +50,7 @@ function MovieListPage() {
           <div className={styles.logo}></div>
           <Routes>
             <Route path=':movieId' element={<button className={styles.search} onClick={() => navigate('')}></button>}></Route>
-            <Route path='*' element={<button className={styles.addMovie}>+ Add Movie</button>}></Route>
+            <Route path='*' element={<button className={styles.addMovie} onClick={() => navigate('new')}>+ Add Movie</button>}></Route>
           </Routes>
           <Outlet/>
         </div>

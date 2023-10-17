@@ -3,10 +3,11 @@ import styles from './styles.module.css';
 
 export default function GenreSelect({ genres, selectedGenre, onSelect }) {
   let [expanded, setExpanded] = useState(false);
-  const [checkedValues, setCheckedValues] = useState([ selectedGenre, true ]);
+  const [checkedValues, setCheckedValues] = useState(selectedGenre ? [ selectedGenre ] : []);
 
   const handleOnChange = (event, genre) => {
     const { value, checked } = event.target;
+
     if (checked) {
       setCheckedValues([...checkedValues, value]);
     } else {
@@ -14,7 +15,8 @@ export default function GenreSelect({ genres, selectedGenre, onSelect }) {
         checkedValues.filter((checkedValue) => checkedValue !== value)
       );
     }
-    onSelect(genre);
+
+    onSelect(checkedValues);
   }
 
   return (
@@ -29,7 +31,7 @@ export default function GenreSelect({ genres, selectedGenre, onSelect }) {
                 type="checkbox" 
                 value={genre} 
                 checked={checkedValues.includes(genre)} 
-                onChange={event => handleOnChange(event, genre)} 
+                onChange={event => handleOnChange(event, genre)}
               ></input>
               <span className={styles.checkmark}></span>
             </label>

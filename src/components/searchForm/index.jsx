@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
-import { useSearchParams } from  'react-router-dom';
+import { Outlet, useSearchParams } from  'react-router-dom';
 import { parseSearchParams } from '../../helpers/utils';
 
 export default function SearchForm({ initialQuery, onSearch }) {
@@ -19,18 +19,21 @@ export default function SearchForm({ initialQuery, onSearch }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <h1 className={styles.header}>Find your movie</h1>
-      <div className={styles.controls}>
-        <input 
-          type="text" 
-          defaultValue={searchQuery} 
-          onChange={handleChange} 
-          placeholder="What do you want to watch?" 
-          className={styles.input}
-        />
-        <input type="submit" value="Submit" className={styles.submit}/>
-      </div>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h1 className={styles.header}>Find your movie</h1>
+        <div className={styles.controls}>
+          <input 
+            type="text" 
+            defaultValue={searchQuery} 
+            onChange={handleChange} 
+            placeholder="What do you want to watch?" 
+            className={styles.input}
+          />
+          <input type="submit" value="Submit" className={styles.submit}/>
+        </div>
+      </form>
+      <Outlet />
+    </>
   );
 }

@@ -4,7 +4,7 @@ import { Portal } from 'react-portal';
 import FocusTrap from 'focus-trap-react';
 import styles from './styles.module.css';
 
-function Dialog({ title, children, onClose }) {
+function Dialog({ children, onClose }) {
   const container = document.getElementById('dialog-container');
 
   return (
@@ -12,7 +12,6 @@ function Dialog({ title, children, onClose }) {
       <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }} containerElements={[container]}>
         <div className={styles.dialog}>
           <button className={styles.close} onClick={onClose} data-testid="close"></button>
-          <h3 className={styles.title}>{title}</h3>
           <div className={styles.body}>
             {children}
           </div>
