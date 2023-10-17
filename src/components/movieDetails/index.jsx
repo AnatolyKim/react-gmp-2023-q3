@@ -3,8 +3,8 @@ import styles from './styles.module.css'
 import { useLoaderData } from 'react-router-dom';
 import { mapMovieData } from '../../helpers/movie.helper';
 
-function MovieDetails({ movie }) {
-  const data = movie || mapMovieData(useLoaderData());
+function MovieDetails() {
+  const data = mapMovieData(useLoaderData());
 
   const { imageUrl, name, releaseYear, rating, duration, description, genres } = data;
 
