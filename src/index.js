@@ -12,33 +12,9 @@ import {
 } from "react-router-dom";
 import MovieDetails from './components/movieDetails';
 import SearchForm from './components/searchForm';
-import Dialog from './components/dialog';
-import AddMovieForm from './components/addMovieForm';
 import { movieLoader } from './loaders/movie.loader';
-
-const postMovieData = (data) => {
-  fetch("http://localhost:4000/movies/", {
-    method: "POST",
-    body: JSON.stringify(parseFormData(data)),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  });
-}
-
-const parseFormData = (data) => {
-  const { title, poster_path, vote_average, release_date, overview, genres, runtime } = data;
-
-  return {
-    title,
-    poster_path,
-    release_date,
-    overview,
-    genres,
-    vote_average: +vote_average,
-    runtime: +runtime
-  }
-}
+import AddMovieDialog from './components/addMovieDialog';
+import MovieService from './services/movieService';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,12 +22,7 @@ const router = createBrowserRouter(
       <Route path='*' element={<MovieListPage />}>
         <Route path=":movieId" loader={movieLoader} element={<MovieDetails />} />
         <Route path="*" element={<SearchForm onSearch={() => {}} />}>
-          <Route path='new' element={
-            <Dialog>
-              <AddMovieForm onSubmit={postMovieData} genres={['Action', 'Comedy', 'Drama']}></AddMovieForm>
-            </Dialog>
-          }>
-          </Route>
+          <Route path='new' element={<AddMovieDialog service={MovieService}/>} />
         </Route>
       </Route>
     </Route>

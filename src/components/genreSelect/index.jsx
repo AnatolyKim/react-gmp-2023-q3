@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import styles from './styles.module.css';
 
-export default function GenreSelect({ genres, selectedGenre, onSelect }) {
+export default function GenreSelect({ genres = [], selectedGenre = '', onSelect }) {
   let [expanded, setExpanded] = useState(false);
   const [checkedValues, setCheckedValues] = useState(selectedGenre ? [ selectedGenre ] : []);
 
-  const handleOnChange = (event, genre) => {
+  const handleOnChange = (event) => {
     const { value, checked } = event.target;
+    let selectedGenres = checkedValues;
 
     if (checked) {
-      setCheckedValues([...checkedValues, value]);
+      selectedGenres.push(value);
     } else {
-      setCheckedValues(
-        checkedValues.filter((checkedValue) => checkedValue !== value)
-      );
+      selectedGenres = selectedGenres.filter((checkedValue) => checkedValue !== value);
     }
 
+    setCheckedValues(selectedGenres);
     onSelect(checkedValues);
   }
 
@@ -31,7 +31,7 @@ export default function GenreSelect({ genres, selectedGenre, onSelect }) {
                 type="checkbox" 
                 value={genre} 
                 checked={checkedValues.includes(genre)} 
-                onChange={event => handleOnChange(event, genre)}
+                onChange={event => handleOnChange(event)}
               ></input>
               <span className={styles.checkmark}></span>
             </label>

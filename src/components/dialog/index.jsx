@@ -22,7 +22,6 @@ function Dialog({ children, onClose }) {
 }
 
 Dialog.propTypes = {
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   children: PropTypes.element.isRequired,
   onClose: PropTypes.func.isRequired,
 };
