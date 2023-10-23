@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from './styles.module.css';
 
-export default function GenreSelect({ genres = [], selectedGenre = '', onSelect }) {
+export default function GenreSelect({ genres = [], selectedGenres = [], onSelect }) {
   let [expanded, setExpanded] = useState(false);
-  const [checkedValues, setCheckedValues] = useState(selectedGenre ? [ selectedGenre ] : []);
+  const [checkedValues, setCheckedValues] = useState(selectedGenres.length ? selectedGenres : []);
 
   const handleOnChange = (event) => {
     const { value, checked } = event.target;

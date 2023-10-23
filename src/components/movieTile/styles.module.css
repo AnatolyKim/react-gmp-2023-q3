@@ -1,6 +1,7 @@
 .tile {
   width: 325px;
   min-height: 500px;
+  position: relative;
 }
 
 img {

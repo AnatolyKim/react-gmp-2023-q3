@@ -4,15 +4,17 @@ import styles from './styles.module.css';
 import { useForm, Controller } from 'react-hook-form';
 
 function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmit }) {
-  const { title, poster_path, release_date, vote_average, runtime, overview } = movieInfo;
+  const { title, poster_path, release_date, vote_average, runtime, overview, id } = movieInfo;
   const { register, handleSubmit, control, formState: { errors }, } = useForm({
     defaultValues: {
+      id: id || '',
       title: title || '',
       poster_path: poster_path || '',
       release_date: release_date || '',
       vote_average: vote_average || 0,
       runtime: runtime || 0,
-      overview: overview || ''
+      overview: overview || '',
+      genres: movieInfo.genres || []
     }
   });
 
@@ -43,7 +45,7 @@ function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmi
             render={({ field }) => (
               <GenreSelect
                 genres={genres}
-                selectedGenre={''}
+                selectedGenres={movieInfo.genres}
                 onSelect={value => field.onChange(value)}
               />
             )}
@@ -61,7 +63,7 @@ function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmi
         </label>
         <label className={`${styles.gridItem} ${styles.formControl}`}>
           <span>Rating</span>
-          <input type="number" {...register("vote_average", { required: true })} />
+          <input type="number" step="0.1" {...register("vote_average", { required: true, min: 0 })} />
         </label>
         <label className={`${styles.gridItem} ${styles.formControl}`}>
           <span>Runtime</span>

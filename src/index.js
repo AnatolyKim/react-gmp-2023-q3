@@ -15,12 +15,15 @@ import SearchForm from './components/searchForm';
 import { movieLoader } from './loaders/movie.loader';
 import AddMovieDialog from './components/addMovieDialog';
 import MovieService from './services/movieService';
+import EditMovieDialog from './components/editMovieDialog';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="*" element={<App />}>
       <Route path='*' element={<MovieListPage />}>
-        <Route path=":movieId" loader={movieLoader} element={<MovieDetails />} />
+        <Route path=":movieId" loader={movieLoader} element={<MovieDetails />}>
+          <Route path="edit" element={<EditMovieDialog service={MovieService}/>}/>
+        </Route>
         <Route path="*" element={<SearchForm onSearch={() => {}} />}>
           <Route path='new' element={<AddMovieDialog service={MovieService}/>} />
         </Route>

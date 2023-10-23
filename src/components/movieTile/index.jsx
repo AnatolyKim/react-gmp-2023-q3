@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './styles.module.css';
+import ContextMenu from '../contextMenu';
 
 function MovieTile({ movie, onClick }) {
-  const { imageUrl, name, releaseYear, genres } = movie;
+  const { imageUrl, name, releaseYear, genres, id } = movie;
 
   return (
     <div className={styles.tile} onClick={() => onClick(movie)}>
       <img src={imageUrl} alt={name} />
+      <ContextMenu actions={['edit', 'delete']} id={id}/>
       <div className={styles.title}>
         <p className={styles.name}>{name}</p>
         <p className={styles.year}>{releaseYear}</p>
