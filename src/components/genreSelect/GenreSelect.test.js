@@ -6,7 +6,7 @@ import { act } from 'react-dom/test-utils';
 
 describe('GenreSelect component', () => {
   const genres = ['Action', 'Comedy', 'Drama'];
-  const selectedGenre = 'Comedy';
+  const selectedGenres = ['Comedy'];
   const onSelect = jest.fn();
 
   it('renders all genres passed in props', () => {
@@ -16,21 +16,24 @@ describe('GenreSelect component', () => {
     });
   });
 
-  it('highlights a selected genre passed in props', () => {
-    const { getByLabelText } = render(<GenreSelect genres={genres} selectedGenre={selectedGenre} />);
-    const selectedGenreCheckbox = getByLabelText(selectedGenre);
+  it('highlights a selected genres passed in props', () => {
+    const { getByLabelText } = render(<GenreSelect genres={genres} selectedGenres={selectedGenres} />);
 
-    expect(selectedGenreCheckbox.checked).toBe(true);
+    selectedGenres.forEach((genre) => {
+      const selectedGenreCheckbox = getByLabelText(genre);
+
+      expect(selectedGenreCheckbox.checked).toBe(true);
+    })
   });
 
   it('calls "onChange" callback and passes correct genre in arguments', () => {
-    const { getByLabelText } = render(<GenreSelect genres={genres} selectedGenre={selectedGenre} onSelect={onSelect} />);
+    const { getByLabelText } = render(<GenreSelect genres={genres} selectedGenres={selectedGenres} onSelect={onSelect} />);
     const actionCheckbox = getByLabelText('Action');
     
     act(() => {
       userEvent.click(actionCheckbox);
     })
     
-    expect(onSelect).toHaveBeenCalledWith('Action');
+    expect(onSelect).toHaveBeenCalledWith(["Comedy", "Action"]);
   });
 });

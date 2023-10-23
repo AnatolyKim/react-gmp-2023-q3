@@ -5,15 +5,15 @@ import Dialog from './index';
 describe('Dialog', () => {
   it('renders the title and children', () => {
     render(
-      <Dialog title="Test Title" onClose={() => {}}>
+      <Dialog onClose={() => {}}>
         <form>
-          <input type="text" name="title" className="input" tabIndex="0"/>
+          <input type="text" name="title" className="input" tabIndex="0" placeholder='test text'/>
           <button tabIndex="0">Submit</button>
         </form>
       </Dialog>
     );
 
-    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('test text')).toBeInTheDocument();
     expect(screen.getByText('Submit')).toBeInTheDocument();
   });
 
@@ -22,7 +22,7 @@ describe('Dialog', () => {
     render(
       <Dialog title="Test Title" onClose={onCloseMock}>
         <div>
-          <input type="text" name="title" className="input" tabIndex="0"/>
+          <input type="text" name="title" className="input" tabIndex="0" />
           <button tabIndex="0">Submit</button>
         </div>
       </Dialog>

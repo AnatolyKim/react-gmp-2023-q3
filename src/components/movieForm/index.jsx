@@ -26,7 +26,7 @@ function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmi
           <span>Movie Title</span>
           <input type="text" {...register("title", { required: true })} />
           {errors.title?.type === "required" && (
-            <p className={styles.error} role="alert">Title name is required</p>
+            <p className={styles.error} role="alert">Title is required</p>
           )}
         </label>
         <label className={`${styles.gridItem} ${styles.formControl}`}>

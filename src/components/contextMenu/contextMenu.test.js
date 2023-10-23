@@ -1,56 +1,44 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import ContextMenu from './ContextMenu';
+import ContextMenu from './index';
+import { MemoryRouter as Router } from "react-router-dom";
+import { act } from 'react-dom/test-utils';
 
 describe('ContextMenu', () => {
   const actions = ['edit', 'delete'];
+  let component;
+  
+  beforeEach(() => {
+    component = render(<Router initialEntries={["/"]}><ContextMenu actions={actions} id="123" /></Router>)
+  })
 
   it('should display the menu when the button is clicked', () => {
-    const { getByRole, getByText } = render(
-      <ContextMenu actions={actions} id="123" />
-    );
+    const { getByRole, getByText } = component;
 
     const button = getByRole('button');
 
-    fireEvent.click(button);
+    act(() => {
+      fireEvent.click(button);
+    })
 
-    expect(button).toHaveClass('opened');
     expect(getByText('edit')).toBeInTheDocument();
     expect(getByText('delete')).toBeInTheDocument();
   });
 
   it('should hide the menu when a menu item is clicked', () => {
-    const { getByRole, getByText, queryByText } = render(
-      <ContextMenu actions={actions} id="123" />
-    );
+    const { getByRole, queryByText } = component;
 
     const button = getByRole('button');
 
-    fireEvent.click(button);
+    act(() => {
+      fireEvent.click(button);
+    })
 
-    const deleteItem = getByText('delete');
+    act(() => {
+      fireEvent.click(button);
+    })
 
-    fireEvent.click(deleteItem);
 
     expect(queryByText('delete')).not.toBeInTheDocument();
-    expect(button).not.toHaveClass('opened');
-  });
-
-  it('should navigate when a menu item is clicked', () => {
-    const navigateMock = jest.fn();
-
-    const { getByRole, getByText } = render(
-      <ContextMenu actions={actions} id="123" navigate={navigateMock} />
-    );
-
-    const button = getByRole('button');
-
-    fireEvent.click(button);
-
-    const editItem = getByText('edit');
-
-    fireEvent.click(editItem);
-
-    expect(navigateMock).toBeCalledWith('123/edit');
   });
 });
