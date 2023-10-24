@@ -1,4 +1,4 @@
-import SearchForm from '../components/searchForm/SearchForm';
+import SearchForm from '../components/searchForm';
 
 export default {
   title: 'App/SearchForm',

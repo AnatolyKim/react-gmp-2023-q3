@@ -1,4 +1,4 @@
-import SortControl from '../components/sortControl/SortControl';
+import SortControl from '../components/sortControl';
 
 export default {
   title: 'App/SortControl',

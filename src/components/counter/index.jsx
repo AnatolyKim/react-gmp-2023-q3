@@ -1,5 +1,5 @@
 import React from 'react';
-import './Counter.css'
+import styles  from './styles.module.css'
 
 class Counter extends React.Component {
   constructor(props) {
@@ -24,10 +24,10 @@ class Counter extends React.Component {
   render() {
     return React.createElement(
       'div',
-      { className: 'counter'},
-      React.createElement('button', { onClick: () => this.decrement() }, '<'),
-      React.createElement('span', { className: 'count'}, this.state.count),
-      React.createElement('button', { onClick: () => this.increment() }, '>'),
+      { className: styles.counter},
+      React.createElement('button', { onClick: () => this.decrement(), className: styles.button }, '<'),
+      React.createElement('span', { className: styles.count }, this.state.count),
+      React.createElement('button', { onClick: () => this.increment(), className: styles.button }, '>'),
     );
   }
 }

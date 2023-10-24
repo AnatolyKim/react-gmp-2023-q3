@@ -1,4 +1,4 @@
-import MovieTile from '../components/movieTile/MovieTile';
+import MovieTile from '../components/movieTile';
 
 export default {
   title: 'App/MovieTile',

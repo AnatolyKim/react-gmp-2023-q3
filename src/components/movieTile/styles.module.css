@@ -1,4 +1,4 @@
-.movie-tile {
+.tile {
   width: 325px;
 }
 
@@ -7,12 +7,12 @@ img {
   height: 490px;
 }
 
-.movie-title {
+.title {
   display: flex;
   justify-content: space-between;
 }
 
-.movie-tile-name {
+.name {
   color: #FFF;
   font-family: Montserrat;
   font-size: 18px;
@@ -21,7 +21,7 @@ img {
   line-height: normal;
 }
 
-.movie-tile-release-year {
+.year {
   border-radius: 4px;
   border: 1px solid #979797;
   opacity: 0.5;
@@ -35,7 +35,7 @@ img {
   padding: 4px 8px;
 }
 
-.movie-tile-genres {
+.genres {
   color: #FFF;
   font-family: Montserrat;
   font-size: 14px;
