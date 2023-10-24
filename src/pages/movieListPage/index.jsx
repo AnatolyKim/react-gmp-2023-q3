@@ -45,7 +45,7 @@ function MovieListPage() {
   }, [searchParams]);
 
   return (
-    <div className={styles.app}>
+    <>
       <header className={styles.header}>
         <div className={`${styles.contentRestrict} ${styles.navigation}`}>
           <div className={styles.logo}></div>
@@ -72,8 +72,7 @@ function MovieListPage() {
           ))}
         </div>
       </div>
-      <footer className={styles.footer}></footer>
-    </div>
+    </>
   );
 }
 

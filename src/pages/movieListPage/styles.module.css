@@ -1,15 +1,7 @@
-.app {
-  text-align: center;
-}
-
 .contentRestrict {
   max-width: 1080px;
   margin: 0 auto;
   position: relative;
-}
-
-.divider {
-  margin-bottom: 25px;
 }
 
 .logo {
@@ -110,13 +102,6 @@
   line-height: normal;
   padding: 30px 0;
   text-align: left;
-}
-
-.footer {
-  height: 70px;
-  background: url('../../../public/assets/icons/logo.svg') no-repeat;
-  background-position: center;
-  background-color: #424242;
 }
 
 .search {
