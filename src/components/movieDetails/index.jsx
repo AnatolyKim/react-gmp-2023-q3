@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.css'
 import { Outlet, useLoaderData } from 'react-router-dom';
 import { mapMovieData } from '../../helpers/movie.helper';
+import { v4 as uuid } from 'uuid';
 
 function MovieDetails() {
   const data = mapMovieData(useLoaderData());
@@ -25,7 +26,7 @@ function MovieDetails() {
         </div>
         <div className={styles.genres}>
           {genres.map((genre, index) => (
-            <span key={index}>
+            <span key={uuid()}>
               {genre}{index !== genres.length - 1 && ','}&nbsp;
             </span>
           ))}

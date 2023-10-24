@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 import ContextMenu from '../contextMenu';
+import { v4 as uuid } from 'uuid';
 
 function MovieTile({ movie, onClick }) {
   const { imageUrl, name, releaseYear, genres, id } = movie;
@@ -15,7 +16,7 @@ function MovieTile({ movie, onClick }) {
       </div>
       <div className={styles.genres}>
         {genres.map((genre, index) => (
-          <span key={index} className={styles.genre}>
+          <span key={uuid()} className={styles.genre}>
             {genre}{index !== genres.length - 1 && ','}&nbsp;
           </span>
         ))}
