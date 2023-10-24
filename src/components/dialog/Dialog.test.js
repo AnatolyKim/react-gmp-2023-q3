@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Dialog from './index';
 
 describe('Dialog', () => {
-  it('renders the title and children', () => {
+  it('renders the content', () => {
     render(
       <Dialog onClose={() => {}}>
         <form>

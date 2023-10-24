@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import classNames from "classnames";
 
 export default function GenreSelect({ genres = [], selectedGenres = [], onSelect }) {
-  let [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [checkedValues, setCheckedValues] = useState(selectedGenres.length ? selectedGenres : []);
 
   const handleOnChange = (event) => {
