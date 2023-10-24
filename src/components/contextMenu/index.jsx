@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles  from './styles.module.css'
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import classNames from 'classnames';
 
 function ContextMenu({ actions = [], id = '' }) {
   const [ opened, setOpened] = useState(false);
@@ -25,7 +26,7 @@ function ContextMenu({ actions = [], id = '' }) {
   };
 
   return (
-    <div className={`${styles.menu} ${opened ? styles.opened : ''}`}>
+    <div className={classNames(styles.menu, opened ? styles.opened : '')}>
       <button className={styles.button} onClick={toggle}></button>
       {opened && (
         <ul className={styles.actions}>

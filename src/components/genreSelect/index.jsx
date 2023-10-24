@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from './styles.module.css';
 import { v4 as uuid } from 'uuid';
+import classNames from "classnames";
 
 export default function GenreSelect({ genres = [], selectedGenres = [], onSelect }) {
   let [expanded, setExpanded] = useState(false);
@@ -23,7 +24,7 @@ export default function GenreSelect({ genres = [], selectedGenres = [], onSelect
   return (
     <div className={styles.container}>
       <label className={styles.label}>Genre</label>
-      <div className={`${styles.toggle} ${expanded ? styles.active : ''}`} onClick={() => setExpanded(!expanded)} tabIndex="0">Select Genre</div>
+      <div className={classNames(styles.toggle, expanded ? styles.active : '')} onClick={() => setExpanded(!expanded)} tabIndex="0">Select Genre</div>
       <div className={styles.options}>
         {genres.map((genre) => (
           <div key={uuid()} className={styles.option}>
