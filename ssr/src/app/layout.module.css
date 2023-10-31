@@ -1,0 +1,6 @@
+.footer {
+  height: 70px;
+  background: url('../assets/icons/logo.svg') no-repeat;
+  background-position: center;
+  background-color: #424242;
+}
