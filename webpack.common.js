@@ -9,17 +9,6 @@ module.exports = {
     clean: true,
     assetModuleFilename: 'assets/[name][ext]',
   },
-  devServer: {
-    port: 3000,
-    open: true,
-    hot: true,
-    compress: true,
-    historyApiFallback: true,
-  },
-  devtool: 'source-map',
-  stats: {
-    errorDetails: true
-  },
   module: {
     rules: [
       {
@@ -49,4 +38,7 @@ module.exports = {
       favicon: 'public/favicon.ico',
     })
   ],
+  stats: {
+    errorDetails: true
+  },
 }
