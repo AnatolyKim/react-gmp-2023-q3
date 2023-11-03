@@ -23,7 +23,8 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "analyze": "webpack --config webpack.prod.js --profile --json=stats.json && webpack-bundle-analyzer stats.json"
   },
   "eslintConfig": {
     "extends": [
@@ -70,6 +71,7 @@
     "storybook": "^7.4.2",
     "style-loader": "^3.3.3",
     "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.9.1",
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.10.0"
   }
