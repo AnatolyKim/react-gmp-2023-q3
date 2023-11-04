@@ -1,7 +1,5 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import GenreSelect from './index';
-import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 
 describe('GenreSelect component', () => {
@@ -31,7 +29,7 @@ describe('GenreSelect component', () => {
     const actionCheckbox = getByLabelText('Action');
     
     act(() => {
-      userEvent.click(actionCheckbox);
+      fireEvent.click(actionCheckbox);
     })
     
     expect(onSelect).toHaveBeenCalledWith(["Comedy", "Action"]);

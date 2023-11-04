@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styles from './styles.module.css';
 import { v4 as uuid } from 'uuid';
 import classNames from "classnames";
 
-export default function GenreSelect({ genres = [], selectedGenres = [], onSelect }) {
+type GenreSelect = {
+  genres: string[];
+  selectedGenres: string[];
+  onSelect: (genres: string[]) => void
+}
+
+export default function GenreSelect({ genres = [], selectedGenres = [], onSelect }: GenreSelect) {
   const [expanded, setExpanded] = useState(false);
   const [checkedValues, setCheckedValues] = useState(selectedGenres.length ? selectedGenres : []);
 
-  const handleOnChange = (event) => {
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = event.target;
     let selectedGenres = checkedValues;
 
@@ -24,7 +30,7 @@ export default function GenreSelect({ genres = [], selectedGenres = [], onSelect
   return (
     <div className={styles.container}>
       <label className={styles.label}>Genre</label>
-      <div className={classNames(styles.toggle, expanded ? styles.active : '')} onClick={() => setExpanded(!expanded)} tabIndex="0">Select Genre</div>
+      <div className={classNames(styles.toggle, expanded ? styles.active : '')} onClick={() => setExpanded(!expanded)} tabIndex={0}>Select Genre</div>
       <div className={styles.options}>
         {genres.map((genre) => (
           <div key={uuid()} className={styles.option}>

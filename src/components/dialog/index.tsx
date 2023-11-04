@@ -4,8 +4,13 @@ import { Portal } from 'react-portal';
 import FocusTrap from 'focus-trap-react';
 import styles from './styles.module.css';
 
-function Dialog({ children, onClose }) {
-  const container = document.getElementById('dialog-container');
+type Dialog = {
+  children: React.ReactNode,
+  onClose: () => void
+}
+
+function Dialog({ children, onClose }: Dialog) {
+  const container = document.getElementById('dialog-container') as HTMLElement;
 
   return (
     <Portal node={container}>

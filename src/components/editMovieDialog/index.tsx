@@ -2,12 +2,19 @@ import React from 'react';
 import Dialog from '../dialog';
 import MovieForm from '../movieForm';
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { IApiMovie } from '../../models/movie.interface';
 
-function EditMovieDialog({ service }) {
+type EditMovieDialog = {
+  service: {
+    updateMovieData: (movie: IApiMovie) => Promise<void>
+  }
+}
+
+function EditMovieDialog({ service }: EditMovieDialog) {
   const navigate = useNavigate();
-  const [movieData] = useOutletContext();
+  const [movieData] = useOutletContext<IApiMovie[]>();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: IApiMovie) => {
     service.updateMovieData(data)
       .then(() => navigate('/'))
       .catch((err) => console.error(err));

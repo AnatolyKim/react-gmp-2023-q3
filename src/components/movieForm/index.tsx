@@ -1,10 +1,17 @@
-import React from 'react';
 import GenreSelect from '../genreSelect';
 import styles from './styles.module.css';
 import { useForm, Controller } from 'react-hook-form';
+import { IApiMovie } from '../../models/movie.interface';
 
-function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmit }) {
-  const { title, poster_path, release_date, vote_average, runtime, overview, id } = movieInfo;
+type MovieForm = {
+  movieInfo?: IApiMovie,
+  genres?: string[],
+  header?: string;
+  onSubmit: (data: IApiMovie) => void,
+}
+
+function MovieForm({ movieInfo, genres = [], header = 'Edit Movie', onSubmit }: MovieForm) {
+  const { title, poster_path, release_date, vote_average, runtime, overview, id } = movieInfo || {};
   const { register, handleSubmit, control, formState: { errors }, } = useForm({
     defaultValues: {
       id: id || '',
@@ -14,7 +21,7 @@ function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmi
       vote_average: vote_average || 0,
       runtime: runtime || 0,
       overview: overview || '',
-      genres: movieInfo.genres || []
+      genres: movieInfo?.genres || []
     }
   });
 
@@ -40,13 +47,13 @@ function MovieForm({ movieInfo = {}, genres = [], header = 'Edit Movie', onSubmi
           <Controller
             name="genres"
             control={control}
-            defaultValue=""
+            defaultValue={[]}
             rules={{ required: true }}
             render={({ field }) => (
               <GenreSelect
                 genres={genres}
-                selectedGenres={movieInfo.genres}
-                onSelect={value => field.onChange(value)}
+                selectedGenres={movieInfo?.genres || []}
+                onSelect={(value: string[]) => field.onChange(value)}
               />
             )}
           />

@@ -1,17 +1,22 @@
-import { useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react';
 import styles from './styles.module.css';
 import { Outlet, useSearchParams } from  'react-router-dom';
 import { parseSearchParams } from '../../helpers/utils';
 
-export default function SearchForm({ initialQuery, onSearch }) {
+type SearchForm = {
+  initialQuery: string,
+  onSearch: (query: string) => void
+}
+
+export default function SearchForm({ initialQuery, onSearch }: SearchForm) {
   const [searchQuery, setSearchQuery] = useState(initialQuery || '');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setSearchParams(parseSearchParams({search: searchQuery}, searchParams));

@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
 import styles  from './styles.module.css'
-import { useNavigate } from 'react-router-dom';
+import { To, useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
+import { useState, MouseEvent } from 'react';
 
-function ContextMenu({ actions = [], id = '' }) {
+type ContextMenu = {
+  actions: string[];
+  id: string;
+}
+
+function ContextMenu({ actions = [], id = '' }: ContextMenu) {
   const [ opened, setOpened] = useState(false);
-  const routeMap = new Map([
+  const routeMap = new Map<string, string>([
     ['edit', `${id}/edit`],
     [ 'delete', '']
   ]);
   const navigate = useNavigate();
 
-  const toggle = (e) => {
+  const toggle = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     
     setOpened(!opened);
   }
 
-  const handleAction = (e, action) => {
+  const handleAction = (e: MouseEvent<HTMLLIElement>, action: string) => {
     e.stopPropagation();
     
-    navigate(routeMap.get(action));
+    navigate(routeMap.get(action) as To);
     setOpened(false);
   };
 

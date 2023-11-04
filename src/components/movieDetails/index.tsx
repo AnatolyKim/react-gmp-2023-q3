@@ -10,7 +10,7 @@ function MovieDetails() {
 
   const { imageUrl, name, releaseYear, rating, duration, description, genres } = data;
 
-  function convertMinutesToHours(mins) {
+  function convertMinutesToHours(mins: number) {
     return `${Math.floor(mins / 60)}h ${mins % 60}min`;
   }
 
@@ -25,7 +25,7 @@ function MovieDetails() {
           <div className={styles.rating}>{rating}</div>
         </div>
         <div className={styles.genres}>
-          {genres.map((genre, index) => (
+          {genres.map((genre: string, index: number) => (
             <span key={uuid()}>
               {genre}{index !== genres.length - 1 && ','}&nbsp;
             </span>

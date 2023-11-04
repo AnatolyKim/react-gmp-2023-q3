@@ -6,6 +6,7 @@ import { useSearchParams, Route, Routes, useNavigate, Outlet } from 'react-route
 import { mapMovieData } from '../../helpers/movie.helper';
 import { parseSearchParams } from '../../helpers/utils';
 import { v4 as uuid } from 'uuid';
+import { IMovie } from '../../models/movie.interface';
 
 function MovieListPage() {
   const [movies, setMovies] = useState([]);
@@ -63,11 +64,11 @@ function MovieListPage() {
               <li className={`${styles.genre} ${activeGenre === genre && styles.active}`} key={uuid()} onClick={() => setSearchParams(parseSearchParams({ filter: genre }, searchParams))}>{genre}</li>
             ))}
           </ul>
-          <SortControl currentSelection={'release-date'} onSelectionChange={(sortBy) => setSearchParams(parseSearchParams({ sortBy }, searchParams))}/>
+          <SortControl currentSelection={'release-date'} onSelectionChange={(sortBy: string) => setSearchParams(parseSearchParams({ sortBy }, searchParams))}/>
         </div>
         <div className={styles.totalCount}><b>{moviesCount}</b> movies found</div>
         <div className={styles.movieList}>
-          {movies.map((movie) => (
+          {movies.map((movie: IMovie) => (
             <MovieTile movie={mapMovieData(movie)} key={uuid()} onClick={() => navigate(`${movie.id}`)} />
           ))}
         </div>

@@ -1,9 +1,14 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import styles from './styles.module.css'
 
-function SortControl({ currentSelection, onSelectionChange }) {
-  const handleSelectionChange = (e) => {
-    onSelectionChange(e.target.value);
+type SortControl = {
+  currentSelection: string,
+  onSelectionChange: (change: string) => void,
+}
+
+function SortControl({ currentSelection, onSelectionChange }: SortControl) {
+  const handleSelectionChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    onSelectionChange(e?.target.value);
   };
 
   return (

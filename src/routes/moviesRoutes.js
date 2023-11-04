@@ -12,7 +12,7 @@ export const moviesRoutes = {
   children: [
     {
       path: '',
-      element: <SearchForm />,
+      element: <SearchForm onSearch={() => {}}/>,
     },
     {
       path: ':movieId',
