@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import SearchForm from './SearchForm';
+import SearchForm from './index';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 describe('SearchForm component', () => {
   const initialQuery = 'test query';
@@ -19,8 +20,11 @@ describe('SearchForm component', () => {
     const submitButton = getByText('Submit');
     const query = 'Fantasy movies';
 
-    userEvent.type(searchInput, query);
-    userEvent.click(submitButton);
+    act(() => {
+      userEvent.type(searchInput, query);
+      userEvent.click(submitButton);
+    });
+
 
     expect(onSearch).toHaveBeenCalledWith(query);
   });
@@ -30,8 +34,10 @@ describe('SearchForm component', () => {
     const searchInput = getByPlaceholderText('What do you want to watch?');
     const query = 'Fantasy movies';
 
-    userEvent.type(searchInput, query);
-    userEvent.type(searchInput, '{Enter}');
+    act(() => {
+      userEvent.type(searchInput, query);
+      userEvent.type(searchInput, '{Enter}');
+    });
 
     expect(onSearch).toHaveBeenCalledWith(query);
   });

@@ -14,7 +14,7 @@ export default function GenreSelect({ genres, selectedGenre, onSelect }) {
         checkedValues.filter((checkedValue) => checkedValue !== value)
       );
     }
-    onSelect(checkedValues);
+    onSelect(genre);
   }
 
   return (

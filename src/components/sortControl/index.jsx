@@ -10,7 +10,7 @@ function SortControl({ currentSelection, onSelectionChange }) {
     <div className={styles.control}>
       <label htmlFor="sort-by" className={styles.label}>Sort by:</label>
       <select id="sort-by" className={styles.select} defaultValue={currentSelection} onChange={handleSelectionChange}>
-        <option value="release-date">Release Date</option>
+        <option value="release_date">Release Date</option>
         <option value="title">Title</option>
       </select>
     </div>
