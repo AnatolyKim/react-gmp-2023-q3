@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
-import GenreSelect from './index';
 import { act } from 'react-dom/test-utils';
+
+import GenreSelect from './index';
 
 describe('GenreSelect component', () => {
   const genres = ['Action', 'Comedy', 'Drama'];

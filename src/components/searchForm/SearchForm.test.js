@@ -1,7 +1,8 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import SearchForm from './index';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+import SearchForm from './index';
 
 describe('SearchForm component', () => {
   const initialQuery = 'test query';

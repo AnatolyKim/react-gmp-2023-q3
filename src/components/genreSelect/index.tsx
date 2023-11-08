@@ -1,7 +1,8 @@
-import React, { ChangeEvent, useState } from "react";
-import styles from './styles.module.css';
+import { ChangeEvent, useState } from "react";
 import { v4 as uuid } from 'uuid';
 import classNames from "classnames";
+
+import styles from './styles.module.css';
 
 type GenreSelect = {
   genres: string[];

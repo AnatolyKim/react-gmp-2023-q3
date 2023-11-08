@@ -1,7 +1,7 @@
 import React from 'react';
 import styles  from './styles.module.css'
 
-class Counter extends React.Component {
+export default class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,5 +31,3 @@ class Counter extends React.Component {
     );
   }
 }
-
-export default Counter;

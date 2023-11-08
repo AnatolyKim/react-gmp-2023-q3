@@ -1,7 +1,7 @@
-import React from 'react';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+
 import Dialog from '../dialog';
 import MovieForm from '../movieForm';
-import { useNavigate, useOutletContext } from 'react-router-dom';
 import { IApiMovie } from '../../models/movie.interface';
 
 type EditMovieDialog = {
@@ -10,7 +10,7 @@ type EditMovieDialog = {
   }
 }
 
-function EditMovieDialog({ service }: EditMovieDialog) {
+export default function EditMovieDialog({ service }: EditMovieDialog) {
   const navigate = useNavigate();
   const [movieData] = useOutletContext<IApiMovie[]>();
 
@@ -26,5 +26,3 @@ function EditMovieDialog({ service }: EditMovieDialog) {
     </Dialog>
   );
 }
-
-export default EditMovieDialog;

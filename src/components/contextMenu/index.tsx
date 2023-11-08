@@ -1,15 +1,16 @@
-import styles  from './styles.module.css'
 import { To, useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 import { useState, MouseEvent } from 'react';
+
+import styles  from './styles.module.css'
 
 type ContextMenu = {
   actions: string[];
   id: string;
 }
 
-function ContextMenu({ actions = [], id = '' }: ContextMenu) {
+export default function ContextMenu({ actions = [], id = '' }: ContextMenu) {
   const [ opened, setOpened] = useState(false);
   const routeMap = new Map<string, string>([
     ['edit', `${id}/edit`],
@@ -41,5 +42,3 @@ function ContextMenu({ actions = [], id = '' }: ContextMenu) {
     </div>
   );
 }
-
-export default ContextMenu;

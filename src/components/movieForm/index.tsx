@@ -1,7 +1,9 @@
-import GenreSelect from '../genreSelect';
-import styles from './styles.module.css';
 import { useForm, Controller } from 'react-hook-form';
+
+import GenreSelect from '../genreSelect';
 import { IApiMovie } from '../../models/movie.interface';
+
+import styles from './styles.module.css';
 
 type MovieForm = {
   movieInfo?: IApiMovie,
@@ -10,7 +12,7 @@ type MovieForm = {
   onSubmit: (data: IApiMovie) => void,
 }
 
-function MovieForm({ movieInfo, genres = [], header = 'Edit Movie', onSubmit }: MovieForm) {
+export default function MovieForm({ movieInfo, genres = [], header = 'Edit Movie', onSubmit }: MovieForm) {
   const { title, poster_path, release_date, vote_average, runtime, overview, id } = movieInfo || {};
   const { register, handleSubmit, control, formState: { errors }, } = useForm({
     defaultValues: {
@@ -94,5 +96,3 @@ function MovieForm({ movieInfo, genres = [], header = 'Edit Movie', onSubmit }: 
     </form>
   );
 }
-
-export default MovieForm;

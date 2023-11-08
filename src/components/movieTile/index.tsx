@@ -1,14 +1,16 @@
-import styles from './styles.module.css';
-import ContextMenu from '../contextMenu';
 import { v4 as uuid } from 'uuid';
+
+import ContextMenu from '../contextMenu';
 import { IMovie } from '../../models/movie.interface';
+
+import styles from './styles.module.css';
 
 type MovieTile = {
   movie: IMovie,
   onClick: (movie: IMovie) => void
 }
 
-function MovieTile({ movie, onClick }: MovieTile) {
+export default function MovieTile({ movie, onClick }: MovieTile) {
   const { imageUrl, name, releaseYear, genres, id } = movie;
 
   return (
@@ -29,5 +31,3 @@ function MovieTile({ movie, onClick }: MovieTile) {
     </div>
   );
 }
-
-export default MovieTile;

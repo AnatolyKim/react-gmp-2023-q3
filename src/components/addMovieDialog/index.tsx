@@ -1,7 +1,9 @@
-import { IApiMovie } from '../../models/movie.interface';
+import { useNavigate } from 'react-router-dom';
+
 import Dialog from '../dialog';
 import MovieForm from '../movieForm';
-import { useNavigate } from 'react-router-dom';
+import { IApiMovie } from '../../models/movie.interface';
+
 
 type AddMovieDialog = {
   service: {
@@ -9,7 +11,7 @@ type AddMovieDialog = {
   }
 }
 
-function AddMovieDialog({ service }: AddMovieDialog) {
+export default function AddMovieDialog({ service }: AddMovieDialog) {
   const navigate = useNavigate();
 
   const onSubmit = (data: IApiMovie) => {
@@ -24,5 +26,3 @@ function AddMovieDialog({ service }: AddMovieDialog) {
     </Dialog>
   );
 }
-
-export default AddMovieDialog;

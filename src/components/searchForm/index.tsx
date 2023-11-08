@@ -1,7 +1,9 @@
-import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react';
-import styles from './styles.module.css';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Outlet, useSearchParams } from  'react-router-dom';
+
 import { parseSearchParams } from '../../helpers/utils';
+
+import styles from './styles.module.css';
 
 type SearchForm = {
   initialQuery: string,

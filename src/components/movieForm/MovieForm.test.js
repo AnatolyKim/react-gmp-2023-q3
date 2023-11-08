@@ -1,7 +1,7 @@
-import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import MovieForm from './index';
 import { act } from 'react-dom/test-utils';
+
+import MovieForm from './index';
 
 describe('MovieForm', () => {
   const onSubmit = jest.fn();

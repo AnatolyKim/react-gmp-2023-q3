@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import styles from './styles.module.css'
-import { Outlet, useLoaderData } from 'react-router-dom';
-import { mapMovieData } from '../../helpers/movie.helper';
+import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import { Outlet, useLoaderData } from 'react-router-dom';
 
-function MovieDetails() {
-  const data = mapMovieData(useLoaderData());
+import { mapMovieData } from '../../helpers/movie.helper';
+import { IApiMovie } from '../../models/movie.interface';
+
+import styles from './styles.module.css'
+
+export default function MovieDetails() {
+  const data = mapMovieData(useLoaderData() as IApiMovie);
   const [ movieData ] = useState(useLoaderData());
 
   const { imageUrl, name, releaseYear, rating, duration, description, genres } = data;
@@ -41,5 +44,3 @@ function MovieDetails() {
     </div>
   );
 }
-
-export default MovieDetails;
