@@ -1,46 +1,83 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import MovieForm from './index';
-
-const mockInitialMovieInfo = {
-  name: 'Test Movie',
-  url: 'https://example.com/movie',
-  releaseYear: 2021,
-  rating: 4.5,
-  duration: '1h 30min',
-  description: 'A test movie.',
-};
-
-const mockGenreInfo = {
-  genres: ['Action', 'Thriller','Comedy',],
-  selectedGenre: 'Thriller',
-};
-
-const mockOnSubmit = jest.fn();
+import { act } from 'react-dom/test-utils';
 
 describe('MovieForm', () => {
-  it('renders movie form with initial data', () => {
-    render(<MovieForm initialMovieInfo={mockInitialMovieInfo} genreInfo={mockGenreInfo} onSubmit={mockOnSubmit} />);
+  const onSubmit = jest.fn();
+  const genres = ['Action', 'Comedy', 'Drama'];
+  const movieInfo = {
+    id: 1,
+    title: 'Test Movie',
+    poster_path: 'https://example.com/movie.jpg',
+    release_date: '2021-01-01',
+    vote_average: 7.5,
+    runtime: 120,
+    overview: 'This is a test movie',
+    genres: ['Action', 'Comedy']
+  };
 
-    expect(screen.getByText('Edit Movie')).toBeInTheDocument();
-    expect(screen.getByLabelText('Movie Title')).toHaveValue('Test Movie');
-    expect(screen.getByLabelText('Movie URL')).toHaveValue('https://example.com/movie');
-    expect(screen.getByLabelText('Release Date')).toHaveValue(2021);
-    expect(screen.getByLabelText('Rating')).toHaveValue(4.5);
-    expect(screen.getByLabelText('Runtime')).toHaveValue('1h 30min');
-    expect(screen.getByLabelText('Overview')).toHaveValue('A test movie.');
+  beforeEach(() => {
+    onSubmit.mockClear();
   });
 
-  it('submits movie form data', () => {
-    render(<MovieForm initialMovieInfo={{}} genreInfo={mockGenreInfo} onSubmit={mockOnSubmit} />);
+  it('should render the form header', () => {
+    render(<MovieForm onSubmit={onSubmit} genres={genres} />);
 
-    const titleInput = screen.getByLabelText('Movie Title');
-    fireEvent.change(titleInput, { target: { value: 'New Test Movie' } });
+    expect(screen.getByText('Edit Movie')).toBeInTheDocument();
+  });
+
+  it('should render form inputs with initial values', () => {
+    render(<MovieForm onSubmit={onSubmit} genres={genres} movieInfo={movieInfo} />);
+
+    expect(screen.getByLabelText('Movie Title')).toHaveValue('Test Movie');
+    expect(screen.getByLabelText('Poster URL')).toHaveValue('https://example.com/movie.jpg');
+    expect(screen.getByLabelText('Release Date')).toHaveValue('2021-01-01');
+    expect(screen.getByLabelText('Rating')).toHaveValue(7.5);
+    expect(screen.getByLabelText('Runtime')).toHaveValue(120);
+    expect(screen.getByLabelText('Overview')).toHaveValue('This is a test movie');
+  });
+
+  it('should show an error message when a required field is empty', async () => {
+    render(<MovieForm onSubmit={onSubmit} genres={genres} movieInfo={{}} />);
 
     const submitButton = screen.getByRole('button', { name: 'Submit' });
-    fireEvent.click(submitButton);
 
-    expect(mockOnSubmit).toHaveBeenCalledTimes(1);
-    expect(mockOnSubmit).toHaveBeenCalledWith("{\"title\":\"New Test Movie\",\"director\":\"\",\"year\":\"\",\"rating\":\"\",\"runtime\":\"\"}");
+    act(() => {
+      fireEvent.click(submitButton);
+    })
+
+    await waitFor(() => {
+      expect(screen.getByText('Title is required')).toBeInTheDocument();
+      expect(screen.getByText('Poster URL is required')).toBeInTheDocument();
+      expect(screen.getByText('Genres are required')).toBeInTheDocument();
+      expect(screen.getByText('Release date is required')).toBeInTheDocument();
+      expect(screen.getByText('Overview is required')).toBeInTheDocument();
+    })
+
+  });
+
+  it('should trigger the onSubmit function', async () => {
+    render(<MovieForm onSubmit={onSubmit} genres={genres} movieInfo={movieInfo} />);
+
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
+
+    act(() => {
+      fireEvent.click(submitButton);
+    })
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      expect(onSubmit).toHaveBeenCalledWith({
+        id: 1,
+        title: 'Test Movie',
+        poster_path: 'https://example.com/movie.jpg',
+        release_date: '2021-01-01',
+        vote_average: 7.5,
+        runtime: 120,
+        overview: 'This is a test movie',
+        genres: ['Action', 'Comedy']
+      });
+    })
   });
 });

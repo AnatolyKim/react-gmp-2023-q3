@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css'
-import { useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import { mapMovieData } from '../../helpers/movie.helper';
+import { v4 as uuid } from 'uuid';
 
-function MovieDetails({ movie }) {
-  const data = movie || mapMovieData(useLoaderData());
+function MovieDetails() {
+  const data = mapMovieData(useLoaderData());
+  const [ movieData ] = useState(useLoaderData());
 
   const { imageUrl, name, releaseYear, rating, duration, description, genres } = data;
 
@@ -24,7 +26,7 @@ function MovieDetails({ movie }) {
         </div>
         <div className={styles.genres}>
           {genres.map((genre, index) => (
-            <span key={index}>
+            <span key={uuid()}>
               {genre}{index !== genres.length - 1 && ','}&nbsp;
             </span>
           ))}
@@ -35,6 +37,7 @@ function MovieDetails({ movie }) {
         </p>
         <p className={styles.description}>{description}</p>
       </div>
+      <Outlet context={[movieData]}/>
     </div>
   );
 }

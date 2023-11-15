@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, Route, Routes, useNavigate, Outlet } from 'react-router-dom';
 import { mapMovieData } from '../../helpers/movie.helper';
 import { parseSearchParams } from '../../helpers/utils';
+import { v4 as uuid } from 'uuid';
 
 function MovieListPage() {
   const [movies, setMovies] = useState([]);
@@ -44,13 +45,13 @@ function MovieListPage() {
   }, [searchParams]);
 
   return (
-    <div className={styles.app}>
+    <>
       <header className={styles.header}>
         <div className={`${styles.contentRestrict} ${styles.navigation}`}>
           <div className={styles.logo}></div>
           <Routes>
             <Route path=':movieId' element={<button className={styles.search} onClick={() => navigate('')}></button>}></Route>
-            <Route path='*' element={<button className={styles.addMovie}>+ Add Movie</button>}></Route>
+            <Route path='*' element={<button className={styles.addMovie} onClick={() => navigate('new')}>+ Add Movie</button>}></Route>
           </Routes>
           <Outlet/>
         </div>
@@ -59,7 +60,7 @@ function MovieListPage() {
         <div className={styles.filters}>
           <ul className={styles.genres}>
             {genreFilters.map((genre) =>(
-              <li className={`${styles.genre} ${activeGenre === genre && styles.active}`} key={genre} onClick={() => setSearchParams(parseSearchParams({ filter: genre }, searchParams))}>{genre}</li>
+              <li className={`${styles.genre} ${activeGenre === genre && styles.active}`} key={uuid()} onClick={() => setSearchParams(parseSearchParams({ filter: genre }, searchParams))}>{genre}</li>
             ))}
           </ul>
           <SortControl currentSelection={'release-date'} onSelectionChange={(sortBy) => setSearchParams(parseSearchParams({ sortBy }, searchParams))}/>
@@ -67,12 +68,11 @@ function MovieListPage() {
         <div className={styles.totalCount}><b>{moviesCount}</b> movies found</div>
         <div className={styles.movieList}>
           {movies.map((movie) => (
-            <MovieTile movie={mapMovieData(movie)} key={movie.title} onClick={() => navigate(`${movie.id}`)} />
+            <MovieTile movie={mapMovieData(movie)} key={uuid()} onClick={() => navigate(`${movie.id}`)} />
           ))}
         </div>
       </div>
-      <footer className={styles.footer}></footer>
-    </div>
+    </>
   );
 }
 

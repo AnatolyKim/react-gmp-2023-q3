@@ -2,28 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import MovieListPage from './pages/movieListPage'
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
-  createRoutesFromElements,
-  Route,
   RouterProvider,
 } from "react-router-dom";
-import MovieDetails from './components/movieDetails';
-import SearchForm from './components/searchForm';
-import { movieLoader } from './loaders/movie.loader';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="*" element={<App />}>
-      <Route path='*' element={<MovieListPage />}>
-        <Route path=":movieId" loader={movieLoader} element={<MovieDetails />} />
-        <Route path="*" element={<SearchForm onSearch={() => {}} />} />
-      </Route>
-    </Route>
-  )
-);
+import { moviesRoutes } from './routes/moviesRoutes';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      moviesRoutes
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
