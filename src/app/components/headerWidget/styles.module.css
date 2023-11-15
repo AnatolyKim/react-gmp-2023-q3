@@ -1,0 +1,38 @@
+.addMovie {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 180px;
+  height: 45px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px #F65261 solid;
+  color: #F65261;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.addMovie:hover {
+  cursor: pointer;
+  background: #FFF;
+}
+
+.search {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: url('../../../assets/icons/arrow-down.svg') no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.search:hover {
+  border-radius: 4px;
+  border: 1px #F65261 solid;
+  cursor: pointer;
+}

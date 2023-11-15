@@ -1,0 +1,39 @@
+.control {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.label {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.889px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.select {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.889px;
+  text-transform: uppercase;
+}
+
+.select {
+  appearance: none;
+  background-color: #232323;
+  border: none;
+  padding: 10px 30px 10px 10px;
+  background-image: url('../../../assets/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
