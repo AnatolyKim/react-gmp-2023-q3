@@ -17,7 +17,7 @@
   height: 36px;
   background-color: transparent;
   border: none;
-  background-image: url('../../assets/icons/menu.svg');
+  background-image: url('../../../public/assets/icons/menu.svg');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -29,7 +29,7 @@
 .opened .button {
   width: 15px;
   height: 15px;
-  background-image: url('../../assets/icons/close.svg');
+  background-image: url('../../../public/assets/icons/close.svg');
   position: relative;
   top: 15px;
   right: 15px;

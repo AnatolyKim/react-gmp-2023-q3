@@ -1,7 +1,7 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import MovieTile from './index';
 import { MemoryRouter as Router } from "react-router-dom";
+
+import MovieTile from './index';
 
 describe('MovieTile component', () => {
   const mockOnClick = jest.fn();

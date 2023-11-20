@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Portal } from 'react-portal';
 import FocusTrap from 'focus-trap-react';
+
 import styles from './styles.module.css';
 
-function Dialog({ children, onClose }) {
-  const container = document.getElementById('dialog-container');
+type Dialog = {
+  children: React.ReactNode,
+  onClose: () => void
+}
+
+export default function Dialog({ children, onClose }: Dialog) {
+  const container = document.getElementById('dialog-container') as HTMLElement;
 
   return (
     <Portal node={container}>
@@ -25,5 +31,3 @@ Dialog.propTypes = {
   children: PropTypes.element.isRequired,
   onClose: PropTypes.func.isRequired,
 };
-
-export default Dialog;

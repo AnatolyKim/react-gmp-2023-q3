@@ -32,7 +32,7 @@ select {
   background-color: #232323;
   border: none;
   padding: 10px 30px 10px 10px;
-  background-image: url('../../assets/icons/arrow-down.svg');
+  background-image: url('../../../public/assets/icons/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px;

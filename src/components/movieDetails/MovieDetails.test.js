@@ -1,7 +1,7 @@
-import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import MovieDetails from './index';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+
+import MovieDetails from './index';
 
 describe('MovieDetails component', () => {
   const movie = {

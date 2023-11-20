@@ -1,5 +1,4 @@
 import { movieLoader } from "../loaders/movie.loader";
-import MovieService from "../services/movieService";
 import MovieListPage from "../pages/movieListPage";
 import SearchForm from "../components/searchForm";
 import MovieDetails from "../components/movieDetails";
@@ -12,7 +11,7 @@ export const moviesRoutes = {
   children: [
     {
       path: '',
-      element: <SearchForm />,
+      element: <SearchForm onSearch={() => {}}/>,
     },
     {
       path: ':movieId',
@@ -21,13 +20,13 @@ export const moviesRoutes = {
       children: [
         {
           path: 'edit',
-          element: <EditMovieDialog service={MovieService}/>,
+          element: <EditMovieDialog/>,
         }
       ]
     },
     {
       path: 'new',
-      element: <AddMovieDialog service={MovieService}/>,
+      element: <AddMovieDialog/>,
     },
   ],
 }

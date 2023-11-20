@@ -1,9 +1,16 @@
-import React from 'react';
-import styles from './styles.module.css';
-import ContextMenu from '../contextMenu';
 import { v4 as uuid } from 'uuid';
 
-function MovieTile({ movie, onClick }) {
+import ContextMenu from '../contextMenu';
+import { IMovie } from '../../models/movie.interface';
+
+import styles from './styles.module.css';
+
+type MovieTile = {
+  movie: IMovie,
+  onClick: (movie: IMovie) => void
+}
+
+export default function MovieTile({ movie, onClick }: MovieTile) {
   const { imageUrl, name, releaseYear, genres, id } = movie;
 
   return (
@@ -24,5 +31,3 @@ function MovieTile({ movie, onClick }) {
     </div>
   );
 }
-
-export default MovieTile;

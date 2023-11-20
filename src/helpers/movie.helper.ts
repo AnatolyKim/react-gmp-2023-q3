@@ -1,5 +1,6 @@
+import { IApiMovie, IMovie } from "../models/movie.interface";
 
-export const mapMovieData = (movie) => {
+export const mapMovieData = (movie: IApiMovie): IMovie => {
   const { title, poster_path, vote_average, release_date, overview, genres, runtime, id } = movie;
 
   return {
