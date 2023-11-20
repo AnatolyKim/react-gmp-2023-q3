@@ -1,3 +1,5 @@
+import { IRequest } from "./request.interface";
+
 export interface IMovie {
   id: string;
   genres: string[];
@@ -18,4 +20,9 @@ export interface IApiMovie {
   runtime: number; 
   overview: string;
   genres: string[];
+}
+
+export interface IMoviesRequestState extends IRequest {
+  data: IApiMovie[],
+  totalAmount: number,
 }

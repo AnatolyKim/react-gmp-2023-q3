@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid';
 import classNames from "classnames";
 
@@ -16,17 +16,14 @@ export default function GenreSelect({ genres = [], selectedGenres = [], onSelect
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = event.target;
-    let selectedGenres = checkedValues;
+    const update = checked ? [...checkedValues, value] : checkedValues.filter((checkedValue) => checkedValue !== value);
 
-    if (checked) {
-      selectedGenres.push(value);
-    } else {
-      selectedGenres = selectedGenres.filter((checkedValue) => checkedValue !== value);
-    }
-
-    setCheckedValues(selectedGenres);
-    onSelect(checkedValues);
+    setCheckedValues(update);
   }
+
+  useEffect(() => {
+    onSelect(checkedValues);
+  }, [checkedValues]);
 
   return (
     <div className={styles.container}>
@@ -40,7 +37,7 @@ export default function GenreSelect({ genres = [], selectedGenres = [], onSelect
                 type="checkbox" 
                 value={genre} 
                 checked={checkedValues.includes(genre)} 
-                onChange={event => handleOnChange(event)}
+                onChange={handleOnChange}
               ></input>
               <span className={styles.checkmark}></span>
             </label>
