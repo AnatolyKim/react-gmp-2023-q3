@@ -2,20 +2,18 @@ import { useNavigate } from 'react-router-dom';
 
 import Dialog from '../dialog';
 import MovieForm from '../movieForm';
+
 import { IApiMovie } from '../../models/movie.interface';
+import { useDispatch } from '../../store';
+import { postMovie } from '../../store/moviesSlice';
 
 
-type AddMovieDialog = {
-  service: {
-    postMovieData: (movie: IApiMovie) => Promise<void>
-  }
-}
-
-export default function AddMovieDialog({ service }: AddMovieDialog) {
+export default function AddMovieDialog() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = (data: IApiMovie) => {
-    service.postMovieData(data)
+    dispatch(postMovie(data))
       .then(() => navigate('/'))
       .catch((err) => console.error(err));
   }

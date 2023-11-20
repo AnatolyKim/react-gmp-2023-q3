@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { DEFAULT_QUERIES, Genres, PARAMS } from "../constants/enums";
 import { buildQueryString } from "../helpers/utils";
+import { useSelector } from "react-redux";
+import { RootState, useDispatch } from "../store";
+import { getMovies } from "../store/moviesSlice";
 
 export default function useMoviesApi(params: URLSearchParams) {
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
+  const { data: movies, totalAmount: moviesCount } = useSelector((state: RootState) => state.movies);
   const [activeGenre, setActiveGenre] = useState(Genres.ALL);
-  const [moviesCount, setMoviesCount] = useState(0);
 
   useEffect(() => {
-    const abortController = new AbortController();
-    const signal = abortController.signal;
     const searchQuery = params.get(PARAMS.SEARCH) || '';
     const searchSorting = params.get(PARAMS.SORT_BY) || DEFAULT_QUERIES.RELEASE_DATE;
     const searchActiveGenre = params.get(PARAMS.FILTER) || Genres.ALL;
@@ -24,17 +25,8 @@ export default function useMoviesApi(params: URLSearchParams) {
     }
 
     setActiveGenre(searchActiveGenre as Genres);
-
-    fetch(`http://localhost:4000/movies?${queryParams}`, { signal })
-      .then((res) => res.json())
-      .then((res) => {
-        setMovies(res.data);
-        setMoviesCount(res.totalAmount);
-      })
-      .catch((err) => console.warn(err));
-    
-    return () => abortController.abort();
-  }, [params]);
+    dispatch(getMovies(`http://localhost:4000/movies?${queryParams}`))
+  }, [params, dispatch]);
 
 
   return { movies, moviesCount, activeGenre };
